@@ -1,48 +1,67 @@
 #include "StaticList.h"
 
-StaticList::StaticList(int size) :headListIndex(-1), freeListIndex(0) {
-	this->list.reserve(size);
-	for (int i = 1; i < size; i++) {
-		this->list.push_back(SNode(0, i));
-	}
-	this->list.push_back(SNode(0, -1));
-};
+StaticList::StaticList(int size) 
+{
+	this->arr = new SNode[size];
+	this->headList = -1;
+	this->headFree = 0;
 
-bool StaticList::insert(SNode* newNode) {
-	if(this->freeListIndex == -1){
-		return false;
-	}
-	else {
-		if (this->headListIndex == -1) {
-			int tmpIndex = this->list[this->freeListIndex].getNext();
-			newNode.setNext(-1);
-			this->list[this->freeListIndex] = newNode;
-			this->headListIndex = this->freeListIndex;
-			this->freeListIndex = tmpIndex;
-			
+	for (int i = 0; i < size; i++) {
+		if (i == size - 1) {
+			arr[i].setNext(-1);
 		}
 		else {
-				int tmpIndex = this->list[this->freeListIndex].getNext();
-				newNode.setNext(this->headListIndex);
-				this->list[this->freeListIndex] = newNode;
-				this->freeListIndex = tmpIndex;
-		}
-		return true;
-	}
-};
-bool StaticList::deleteNode(SNode* node) {
-	if (this->freeListIndex == -1) {
-		return false;
-	}
-	SNode* cur = this->list[this->headListIndex];
-	while (cur->getNext() != -1) {
-		if (this->list[cur->getNext()] == node) {
-			int newfreeListIndex = cur->getNext()
-			cur->setNext(node->getNext());
-			node.setNext(this->freeListIndex);
-			this->freeListIndex = newfreeListIndex;
+			arr[i].setNext(i + 1);
 		}
 	}
-	return true;
+}
 
-};
+StaticList::~StaticList()
+{
+	delete arr;
+}
+
+bool StaticList::isEmpty() const
+{
+	return this->headList == -1;
+}
+
+SNode* StaticList::first()
+{
+	if (isEmpty()) {
+		return nullptr;
+	}
+	else {
+		return arr + headList;
+	}
+}
+
+SNode* StaticList::last() {
+	if (isEmpty()) {
+		return nullptr;
+	}
+	else
+	{
+		SNode temp = arr[headList];
+		int next = temp.getNext();
+		while (next != -1) {
+			temp = arr[next];
+			next = temp.getNext();
+		}
+		return &temp;
+	}
+}
+
+SNode* StaticList::find(int cityNum) {
+	SNode temp = this->arr[headList];
+	int next = temp.getNext();
+	while (next != -1)
+	{
+		if (temp.getData().getNum() == cityNum) {
+			break;
+		}
+		temp = arr[next];
+		next = temp.getNext();
+	}
+	return &temp;
+}

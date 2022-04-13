@@ -1,23 +1,27 @@
 #pragma once
-
 #include "SNode.h"
-#include <vector>
 
 class StaticList
 {
-	int headListIndex;
-	int freeListIndex;
-	std::vector<SNode> list;
+	int headFree;
+	int headList;
+	SNode* arr;
+
 public:
-	StaticList(int size):headListIndex(-1), freeListIndex(0){};
-	void makeEmpty();
-	bool isEmpty();
-	LNode* first();
-	LNode* last();
-	LNode* find(int data);
-	bool insert(SNode* newNode);
-	bool deleteNode(SNode* node);
-	void print();
+
+	StaticList(int size);
+	~StaticList();
+	bool isEmpty() const;
+	SNode* first();
+	SNode* last();
+	SNode* find(int cityNum);
+	/*LNode* findBefore(LNode* x);
+	void insertToEnd(int x);
+	void insertAfter(LNode* after, int x);
+	void insertToStart(int x);
+	void deleteNode(LNode* x);
 	int size();
+	void makeEmptylist();
+	void printList() const;*/
 };
 

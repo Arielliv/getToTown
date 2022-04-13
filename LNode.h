@@ -1,17 +1,16 @@
 #pragma once
+#include "City.h"
 class LNode
 {
-	int data;
+	City data;
 	LNode* next;
 public: 
-	LNode() :next(nullptr) {};
-	LNode(int data, LNode* ptr = nullptr);
-	int getData();
+	LNode() : next(nullptr) {};
+	LNode(int data, LNode* ptr = nullptr) : data(City(data)), next(nullptr) {};
 	LNode* getNext();
-	void setData(int data);
+	City getData();
 	void setNext(LNode* next);
-	void insertAfter(LNode* newNode);
-	LNode* deleteAfter();
-	void print();
+
+	bool operator==(const LNode& node) const;
 };
 
