@@ -15,19 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StackItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="City.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticList.h">
@@ -36,30 +39,39 @@
     <ClInclude Include="SNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AvailableList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Stack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StackItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="City.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AvailableList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
