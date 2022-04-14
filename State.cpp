@@ -19,10 +19,6 @@ void State::printStateStructure() const
 	}
 }
 
-void State::printColorArr() const
-{
-	std::cout << "Color array: ";
-	for (int i = 0; i < this->numOfCities; i++) {
-		std::cout << cityColors[i] << ' ';
-	}
+LNode* State::getConnectedCitiesList(int cityNum) {
+	return this->structure[cityNum -1].first();
 }

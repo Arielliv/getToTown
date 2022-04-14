@@ -7,12 +7,15 @@ bool LinkedList::isEmpty() const
 
 LNode* LinkedList::first()
 {
+	if (isEmpty()) {
+		return nullptr;
+	}
 	return this->head;
 }
 
 LNode* LinkedList::last()
 {
-	if (this->head == nullptr)
+	if (isEmpty())
 		return nullptr;
 
 	LNode* ptr = this->head;

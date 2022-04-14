@@ -1,5 +1,8 @@
 #include <iostream>
 #include "State.h"
+#include "AvailableList.h"
+
+void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities);
 
 int main() {
 	int numOfCities, numOfPairs;
@@ -10,5 +13,22 @@ int main() {
 	State state(numOfCities);
 	state.buildStateStructure(numOfPairs);
 	state.printStateStructure();
-	state.printColorArr();
+
+	AvailableList availableCities(numOfCities);
+	goToTown(state, 5, availableCities.getColorArr(), availableCities.getAvailableList());
+	availableCities.getAvailableList().printList();
+}
+
+void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities) {
+	if (colors[cityNum - 1] == 1) {
+		return;
+	}
+	colors[cityNum - 1] = 1;
+	availableCities.insertToEnd(cityNum);
+
+	LNode* temp = state.getConnectedCitiesList(cityNum);
+	while (temp != nullptr) {
+		goToTown(state, temp->getData().getNum(), colors, availableCities);
+		temp = temp->getNext();
+	}
 }

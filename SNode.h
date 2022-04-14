@@ -11,5 +11,6 @@ public:
 	int getNext() const;
 	City getData() const;
 	void setNext(int next);
+	void setData(int data);
 };
 

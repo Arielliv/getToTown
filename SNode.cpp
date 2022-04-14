@@ -13,3 +13,8 @@ int SNode::getNext() const
 void SNode::setNext(int next) {
 	this->next = next;
 }
+
+void SNode::setData(int data)
+{
+	this->data.setNum(data);
+}

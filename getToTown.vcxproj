@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AvailableList.h" />
     <ClInclude Include="City.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LNode.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="StaticList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AvailableList.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LNode.cpp" />
