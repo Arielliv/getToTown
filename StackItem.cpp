@@ -19,4 +19,5 @@ bool StackItem::operator==(const StackItem& item) const {
 StackItem& StackItem::operator=(const StackItem& item) {
 	this->data = item.data;
 	this->next = item.next;
+	return *this;
 }

@@ -2,6 +2,10 @@
 #include "State.h"
 #include "AvailableList.h"
 
+State creatState();
+void getUserInput(int& numOfCities, int& numOfPairs);
+void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities);
+
 int main() {
 	State state = creatState();
 	state.printStateStructure();
@@ -9,7 +13,7 @@ int main() {
 	AvailableList availableCities(state.getNumOfCities());
 
 	goToTown(state, 5, availableCities.getColorArr(), availableCities.getAvailableList());
-	availableCities.printAvailableList();
+	availableCities.getAvailableList().printList();
 }
 
 void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities) {

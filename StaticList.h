@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "SNode.h"
 
 class StaticList
@@ -15,13 +16,13 @@ public:
 	SNode* first();
 	SNode* last();
 	SNode* find(int cityNum);
-	/*LNode* findBefore(LNode* x);
+	SNode* findBefore(int cityNum);
 	void insertToEnd(int x);
-	void insertAfter(LNode* after, int x);
+	void insertAfter(SNode* after, int x);
 	void insertToStart(int x);
-	void deleteNode(LNode* x);
+	void deleteNode(SNode* x);
 	int size();
-	void makeEmptylist();
-	void printList() const;*/
+	//void makeEmptylist();
+	void printList() const;
 };
 

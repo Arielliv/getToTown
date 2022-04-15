@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include "StackItem.h"
 
 class Stack

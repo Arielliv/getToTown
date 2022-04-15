@@ -28,7 +28,7 @@ void Stack::push(int data) {
 
 int Stack::pop() {
 	if (this->isEmpty()) {
-		return;
+		std::cout << "error" << std::endl;
 	}
 	StackItem* tmp = this->topItem;
 	int data = tmp->getData();
