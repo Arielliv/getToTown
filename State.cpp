@@ -22,3 +22,7 @@ void State::printStateStructure() const
 LNode* State::getConnectedCitiesList(int cityNum) {
 	return this->structure[cityNum -1].first();
 }
+
+int State::getNumOfCities() {
+	return this->numOfCities;
+}

@@ -2,6 +2,7 @@
 #include "City.h"
 class LNode
 {
+private:
 	City data;
 	LNode* next;
 public: 

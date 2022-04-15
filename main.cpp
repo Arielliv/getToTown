@@ -2,21 +2,14 @@
 #include "State.h"
 #include "AvailableList.h"
 
-void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities);
-
 int main() {
-	int numOfCities, numOfPairs;
-
-	std::cout << "Please enter num of cities and num of pairs\n" << ">>";
-	std::cin >> numOfCities >> numOfPairs;
-
-	State state(numOfCities);
-	state.buildStateStructure(numOfPairs);
+	State state = creatState();
 	state.printStateStructure();
 
-	AvailableList availableCities(numOfCities);
+	AvailableList availableCities(state.getNumOfCities());
+
 	goToTown(state, 5, availableCities.getColorArr(), availableCities.getAvailableList());
-	availableCities.getAvailableList().printList();
+	availableCities.printAvailableList();
 }
 
 void goToTown(State& state, int cityNum, int colors[], StaticList& availableCities) {
@@ -31,4 +24,18 @@ void goToTown(State& state, int cityNum, int colors[], StaticList& availableCiti
 		goToTown(state, temp->getData().getNum(), colors, availableCities);
 		temp = temp->getNext();
 	}
+}
+
+State creatState() {
+	int numOfCities, numOfPairs;
+	getUserInput(numOfCities, numOfPairs);
+
+	State state(numOfCities);
+	state.buildStateStructure(numOfPairs);
+	return state;
+}
+
+void getUserInput(int& numOfCities, int& numOfPairs) {
+	std::cout << "Please enter num of cities and num of pairs\n" << ">>";
+	std::cin >> numOfCities >> numOfPairs;
 }

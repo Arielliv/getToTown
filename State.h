@@ -10,6 +10,7 @@ class State
 	LinkedList* structure;
 
 public:
+	State() {};
 	State(int num) : numOfCities(num) {
 		this->structure = new LinkedList[num];
 	};
@@ -17,5 +18,6 @@ public:
 	void buildStateStructure(int numOfPairs);
 	void printStateStructure()const;
 	LNode* getConnectedCitiesList(int cityNum);
+	int getNumOfCities();
 };
 
