@@ -1,17 +1,18 @@
 #pragma once
+#include "Item.h"
+
 class StackItem
 {
 private:
-	int data;
+	Item item;
 	StackItem* next;
 public:
-	StackItem(): data(0), next(nullptr) {};
-	StackItem(int data, StackItem* ptr = nullptr) : data(data), next(ptr) {};
+	StackItem(Item item, StackItem* ptr = nullptr) : item(item), next(ptr) {};
 	StackItem* getNext();
-	int getData();
+	Item getItem();
 	void setNext(StackItem* next);
 
-	bool operator==(const StackItem& item) const;
+	bool operator==(const StackItem& stackItem) const;
 	StackItem& operator=(const StackItem& item);
 };
 

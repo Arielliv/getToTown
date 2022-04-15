@@ -22,19 +22,23 @@ bool Stack::isEmpty() {
 	return this->topItem == nullptr;
 }
 
-void Stack::push(int data) {
-	this->topItem = new StackItem(data, this->topItem);
+void Stack::push(int cityNum, Line line, LNode* connectedCity) {
+	this->topItem = new StackItem(Item(line, connectedCity,cityNum), this->topItem);
 }
 
-int Stack::pop() {
+void Stack::push(Item item) {
+	this->topItem = new StackItem(item, this->topItem);
+}
+
+Item Stack::pop() {
 	if (this->isEmpty()) {
-		std::cout << "error" << std::endl;
+		std::cout << "error in stack" << std::endl;
 	}
 	StackItem* tmp = this->topItem;
-	int data = tmp->getData();
+	Item item = tmp->getItem();
 	this->topItem = this->topItem->getNext();
 	delete tmp;
-	return data;
+	return item;
 }
 
 StackItem* Stack::top() {
