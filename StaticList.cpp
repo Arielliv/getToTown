@@ -185,7 +185,6 @@ int StaticList::size()
 
 void StaticList::printList() const {
 	int temp = this->headList;
-	std::cout << "List: ";
 	while (temp != -1) {
 		std::cout << arr[temp].getData().getNum() << ' ';
 		temp = arr[temp].getNext();

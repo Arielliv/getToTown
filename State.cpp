@@ -1,12 +1,26 @@
 #include "State.h"
 
-void State::buildStateStructure(int numOfPairs)
+bool State::buildStateStructure(int numOfPairs)
 {
 	int from, to;
-	for (int i = 0; i < numOfPairs; i++) {
-		std::cin >> from >> to;
-		this->structure[from - 1].insertToEnd(to);
-	}
+	int counter = 0;
+	std::string line;
+
+	std::cin.ignore();
+	std::getline(std::cin, line);
+	std::stringstream ss(line);
+
+	while (ss >> from >> to) {
+		if (counter < numOfPairs && (from > 0 && from <= this->numOfCities) && (to > 0 && to && to <= this->numOfCities)) {
+			this->structure[from - 1].insertToEnd(to);
+		}
+		else {
+			return false;
+		}
+		counter++;
+	 }
+	
+	return true;
 }
 
 void State::printStateStructure() const

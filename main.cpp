@@ -3,23 +3,30 @@
 #include "AvailableList.h"
 #include "Stack.h"
 
-State creatState();
+State creatState(bool & isValid);
 void getUserInput(int& numOfCities, int& numOfPairs);
 void getcityNumToCheckInput(int& cityNumToCheck);
 void goToTownRecoursive(State& state, int cityNum, int colors[], StaticList& availableCities);
 void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& availableCities);
 
 int main() {
+	bool isValid = true;
 	int cityNumToCheck;
-	State state = creatState();
-	//state.printStateStructure();
+	State state = creatState(isValid);
+	getcityNumToCheckInput(cityNumToCheck);
+	if (!isValid) {
+		std::cout << "output =invalid input";
+		return 1;
+	}
 	AvailableList availableCities(state.getNumOfCities());
 	AvailableList availableCitiesRec(state.getNumOfCities());
-	getcityNumToCheckInput(cityNumToCheck);
 
 	goToTownRecoursive(state, cityNumToCheck, availableCities.getColorArr(), availableCities.getAvailableList());
 	goToTownNotRecoursive(state, cityNumToCheck, availableCitiesRec.getColorArr(), availableCitiesRec.getAvailableList());
+	std::cout << "output =";
+	std::cout << "Cities accessible from source city" << cityNumToCheck << "(recursive algorithm): ";
 	availableCities.getAvailableList().printList();
+	std::cout << "Cities accessible from source city" << cityNumToCheck << "(iterative algorithm): ";
 	availableCitiesRec.getAvailableList().printList();
 }
 
@@ -77,12 +84,13 @@ void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& 
 	}
 }
 
-State creatState() {
+State creatState(bool& isValid) {
 	int numOfCities, numOfPairs;
 	getUserInput(numOfCities, numOfPairs);
 
 	State state(numOfCities);
-	state.buildStateStructure(numOfPairs);
+	isValid = state.buildStateStructure(numOfPairs);
+
 	return state;
 }
 

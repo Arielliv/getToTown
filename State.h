@@ -3,6 +3,10 @@
 #include <iostream>
 #include "LinkedList.h"
 #include "AvailableList.h"
+#include <vector>
+#include <string>       // std::string
+#include <iostream>     // std::cout
+#include <sstream>
 
 class State
 {
@@ -15,7 +19,7 @@ public:
 		this->structure = new LinkedList[num];
 	};
 
-	void buildStateStructure(int numOfPairs);
+	bool buildStateStructure(int numOfPairs);
 	void printStateStructure()const;
 	LNode* getConnectedCitiesList(int cityNum);
 	int getNumOfCities();
