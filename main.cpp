@@ -16,7 +16,7 @@ int main() {
 	State state = creatState(isValid);
 	getcityNumToCheckInput(cityNumToCheck);
 	if (!isValid) {
-		std::cout << "output =invalid input";
+		std::cout << "invalid input";
 		return 1;
 	}
 	AvailableList availableCitiesRec(state.getNumOfCities());
@@ -30,11 +30,10 @@ int main() {
 
 void printCityResults(int cityNumToCheck, AvailableList& availableCities, bool isRecoure) {
 	if (isRecoure) {
-		std::cout << "output =";
-		std::cout << "Cities accessible from source city" << cityNumToCheck << "(recursive algorithm): ";
+		std::cout << "Cities accessible from source city " << cityNumToCheck << " (recursive algorithm): ";
 	}
 	else {
-		std::cout << "Cities accessible from source city" << cityNumToCheck << "(iterative algorithm): ";
+		std::cout << "Cities accessible from city source city " << cityNumToCheck << " (iterative algorithm): ";
 	}
 
 	availableCities.getAvailableList().printList();
@@ -104,11 +103,13 @@ State creatState(bool& isValid) {
 }
 
 void getUserInput(int& numOfCities, int& numOfPairs) {
-	std::cout << "Please enter num of cities and num of pairs\n" << ">>";
+	//for debuging
+	//std::cout << "Please enter num of cities and num of pairs\n" << ">>";
 	std::cin >> numOfCities >> numOfPairs;
 }
 
 void getcityNumToCheckInput(int& cityNumToCheck) {
-	std::cout << "Please enter city num to check\n" << ">>";
+	//for debuging
+	//std::cout << "Please enter city num to check\n" << ">>";
 	std::cin >> cityNumToCheck;
 }
