@@ -3,7 +3,7 @@
 bool State::buildStateStructure(int numOfPairs)
 {
 	int from, to;
-	int counter = 0;
+	int pairCounter = 0;
 	std::string line;
 
 	std::cin.ignore();
@@ -11,16 +11,20 @@ bool State::buildStateStructure(int numOfPairs)
 	std::stringstream ss(line);
 
 	while (ss >> from >> to) {
-		if (counter < numOfPairs && (from > 0 && from <= this->numOfCities) && (to > 0 && to && to <= this->numOfCities)) {
+		if (pairCounter < numOfPairs && (from > 0 && from <= this->numOfCities) && (to > 0 && to && to <= this->numOfCities)) {
 			this->structure[from - 1].insertToEnd(to);
 		}
 		else {
 			return false;
 		}
-		counter++;
+		pairCounter++;
 	 }
-	
-	return true;
+	if (pairCounter != numOfPairs) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 void State::printStateStructure() const

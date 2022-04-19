@@ -15,7 +15,7 @@ int main() {
 	int cityNumToCheck;
 	State state = creatState(isValid);
 	getcityNumToCheckInput(cityNumToCheck);
-	if (!isValid) {
+	if (!isValid || cityNumToCheck > state.getNumOfCities()) {
 		std::cout << "invalid input";
 		return 1;
 	}
@@ -95,7 +95,10 @@ void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& 
 State creatState(bool& isValid) {
 	int numOfCities, numOfPairs;
 	getUserInput(numOfCities, numOfPairs);
-
+	if (numOfCities < 0) {
+		isValid = false;
+		return NULL;
+	}
 	State state(numOfCities);
 	isValid = state.buildStateStructure(numOfPairs);
 
