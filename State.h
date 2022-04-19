@@ -14,7 +14,7 @@ class State
 	LinkedList* structure;
 
 public:
-	State() {};
+	State() = delete;
 	State(int num) : numOfCities(num) {
 		this->structure = new LinkedList[num];
 	};

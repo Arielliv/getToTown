@@ -16,6 +16,11 @@ StaticList::StaticList(int size)
 	}
 }
 
+void StaticList::makeEmptylist() {
+	this->headList = -1;
+	this->headFree = 0;
+}
+
 StaticList::~StaticList()
 {
 	delete arr;
@@ -86,10 +91,11 @@ SNode* StaticList::findBefore(int cityNum)
 	return arr + temp;
 }
 
-void StaticList::insertToEnd(int x) 
+bool StaticList::insertToEnd(int x) 
 {
 	if (this->headFree == -1) {
 		//return exception
+		return false;
 	}
 	if (isEmpty()) {
 		this->headList = this->headFree;
@@ -113,12 +119,14 @@ void StaticList::insertToEnd(int x)
 		arr[saver].setData(x);
 		arr[saver].setNext(-1);
 	}
+	return true;
 }
 
-void StaticList::insertAfter(SNode* after, int x)
+bool StaticList::insertAfter(SNode* after, int x)
 {
 	if (this->headFree == -1) {
 		//return exception
+		return false;
 	}
 
 	if (after == last()) {
@@ -133,11 +141,13 @@ void StaticList::insertAfter(SNode* after, int x)
 		arr[saver].setData(x);
 		arr[saver].setNext(nextAfter);
 	}
+	return true;
 }
 
-void StaticList::insertToStart(int x) {
+bool StaticList::insertToStart(int x) {
 	if (this->headFree == -1) {
 		//return exception
+		return false;
 	}
 	if (isEmpty()) {
 		insertToEnd(x);
@@ -149,7 +159,7 @@ void StaticList::insertToStart(int x) {
 		arr[saver].setData(x);
 		this->headList = saver;
 	}
-	
+	return true;
 }
 
 void StaticList::deleteNode(SNode* x){

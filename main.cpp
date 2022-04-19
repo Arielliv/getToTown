@@ -8,6 +8,7 @@ void getUserInput(int& numOfCities, int& numOfPairs);
 void getcityNumToCheckInput(int& cityNumToCheck);
 void goToTownRecoursive(State& state, int cityNum, int colors[], StaticList& availableCities);
 void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& availableCities);
+void printCityResults(int cityNumToCheck, AvailableList& availableCities, bool isRecoure);
 
 int main() {
 	bool isValid = true;
@@ -18,16 +19,25 @@ int main() {
 		std::cout << "output =invalid input";
 		return 1;
 	}
-	AvailableList availableCities(state.getNumOfCities());
 	AvailableList availableCitiesRec(state.getNumOfCities());
+	AvailableList availableCitiesNonRec(state.getNumOfCities());
 
-	goToTownRecoursive(state, cityNumToCheck, availableCities.getColorArr(), availableCities.getAvailableList());
-	goToTownNotRecoursive(state, cityNumToCheck, availableCitiesRec.getColorArr(), availableCitiesRec.getAvailableList());
-	std::cout << "output =";
-	std::cout << "Cities accessible from source city" << cityNumToCheck << "(recursive algorithm): ";
+	goToTownRecoursive(state, cityNumToCheck, availableCitiesRec.getColorArr(), availableCitiesRec.getAvailableList());
+	goToTownNotRecoursive(state, cityNumToCheck, availableCitiesNonRec.getColorArr(), availableCitiesNonRec.getAvailableList());
+	printCityResults(cityNumToCheck, availableCitiesRec, true);
+	printCityResults(cityNumToCheck, availableCitiesNonRec, false);
+}
+
+void printCityResults(int cityNumToCheck, AvailableList& availableCities, bool isRecoure) {
+	if (isRecoure) {
+		std::cout << "output =";
+		std::cout << "Cities accessible from source city" << cityNumToCheck << "(recursive algorithm): ";
+	}
+	else {
+		std::cout << "Cities accessible from source city" << cityNumToCheck << "(iterative algorithm): ";
+	}
+
 	availableCities.getAvailableList().printList();
-	std::cout << "Cities accessible from source city" << cityNumToCheck << "(iterative algorithm): ";
-	availableCitiesRec.getAvailableList().printList();
 }
 
 void goToTownRecoursive(State& state, int cityNum, int colors[], StaticList& availableCities) {
@@ -59,7 +69,6 @@ void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& 
 			else {
 				colors[curItem.getCityNum() - 1] = 1;
 				availableCities.insertToEnd(curItem.getCityNum());
-				//curItem.setConnectedCity(state.getConnectedCitiesList(curItem.getCityNum()));
 				
 				if (curItem.getConnectedCity() != nullptr) {
 					Item tmp = Item(Line::START, 

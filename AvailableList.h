@@ -1,5 +1,6 @@
 #pragma once
 #include "StaticList.h"
+
 class AvailableList
 {
 	int* colors;
