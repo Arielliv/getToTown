@@ -62,15 +62,12 @@ void goToTownNotRecoursive(State& state, int cityNum, int colors[], StaticList& 
 		Item curItem = recurStack.pop();
 		
 		if (curItem.getLine() == Line::START) {
-			if (colors[curItem.getCityNum() - 1] == 1) {
-				
-			}
-			else {
+			if (colors[curItem.getCityNum() - 1] != 1) {
 				colors[curItem.getCityNum() - 1] = 1;
 				availableCities.insertToEnd(curItem.getCityNum());
-				
+
 				if (curItem.getConnectedCity() != nullptr) {
-					Item tmp = Item(Line::START, 
+					Item tmp = Item(Line::START,
 						state.getConnectedCitiesList(curItem.getConnectedCity()->getData().getNum()),
 						curItem.getConnectedCity()->getData().getNum());
 					curItem.setLine(Line::After);
